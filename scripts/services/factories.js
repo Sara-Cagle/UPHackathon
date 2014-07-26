@@ -1,10 +1,51 @@
-app.factory('CurrentUser', function(){
+app.factory('Time', function(){
     var service = {};
     
+    /**
+     * Makes the date super pretty from the date object
+    */
+    service.makeDate = function(date){
+        if(date instanceof Date){
+            var year = date.getFullYear()-2000;
+            var day = date.getDate();
+            var month = date.getMonth()+1;
+            return month+"/"+day+"/"+year;
+        }
+        console.log("it wasn't a date");
+    };
+    
+    
+    /**
+     * Makes the time pretty from the date object
+    */
+    service.makeTime = function(date){
+        if(date instanceof Date){
+            var hour = date.getHours();
+            var dayOrNight = "am";
+            if(hour===0){
+                hour = 12;
+                dayOrNight = "am";
+            }
+            else if(hour<12){
+                dayOrNight = "am";
+            }
+            else if(hour>12){
+                dayOrNight = "pm";
+                hour = hour-12;
+            }
+            return hour+":"+date.getMinutes()+" "+dayOrNight;
+        }  
+        console.log("it wasn't a date");
+    };
+    return service;
+});
+
+app.factory('CurrentUser', ['DataFactory', function(DataFactory){
+    var service = {};
     service.user;
     
     return service;
-});
+}]);
 
 
 /**

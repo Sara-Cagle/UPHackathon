@@ -1,24 +1,16 @@
-
-Select your name: 
-<select ng-model="CurrentUser.user">
-    <option ng-repeat="employee in DataFactory" value="{{employee.name}}">{{employee.name}}</option>
-</select>  <br /><br />
-
-
-last 24hrs of sleep: 
-<select ng-model="hour24">
-    <option ng-repeat="hour in hoursInADay track by $index" value="{{$index}}">{{$index}}</option>
-</select>  <br />
+<h2>Current User: {{CurrentUser.user.name}}</h2><br />
 <br />
+Your next shift is:<br />
 
-last 48hrs of sleep:<input ng-model="hour48" /><br />
-time at work: <input ng-model="workHours" /><br />
+<!--call some function here, if the dates of shift[0] have alreayd passed,
+remove it from the function and insted call the next one-->
+<ul>
+    <li>Start time: {{Time.makeDate(CurrentUser.user.shifts[0].start)}} {{Time.makeTime(CurrentUser.user.shifts[0].start)}}</li>
+    <li>End time: {{Time.makeDate(CurrentUser.user.shifts[0].end)}} {{Time.makeTime(CurrentUser.user.shifts[0].end)}}</li>
+</ul>
 
-<br />
 <input type="button" ng-click="calcRisk()" value="Calculate my fatigue factor" />
 <br /><br />
 <p>This is the fatigue value: {{risk}}</p>
 
 <br /><br />
-
-{{CurrentUser.user}}

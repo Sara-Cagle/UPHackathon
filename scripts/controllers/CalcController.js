@@ -1,25 +1,18 @@
-controllers.controller('CalcController', ['$scope', 'DataFactory', 'CurrentUser', function($scope, DataFactory, CurrentUser){
+controllers.controller('CalcController', ['$scope', 'DataFactory', 'CurrentUser', 'Time',function($scope, DataFactory, CurrentUser, Time){
   
   $scope.DataFactory = DataFactory;
 
   $scope.CurrentUser = CurrentUser;
   
-  /**
-   * The content of what goes on the page.
-  */
-  $scope.message = 'Here is calculator';
+  $scope.Time = Time;
+
   
   //fatigue score
   $scope.risk = null;
   
   $scope.hour24; //sleep in just past 24
-  $scope.hour48; //total sleep in past 48
   $scope.workHours; //your total hours of work
-  
-  $scope.startWork;
-  $scope.endWork;
-  
-  var workHours = $scope.endWork - $scope.startWork;
+
   
   $scope.hoursInADay = new Array(25); //(0 to 24)
   
@@ -36,7 +29,8 @@ controllers.controller('CalcController', ['$scope', 'DataFactory', 'CurrentUser'
   $scope.calcRisk = function(){ 
     var x = parseInt($scope.hour24);
     var y = parseInt($scope.hour48);
-    var z = parseInt(workHours);
+    var z = parseInt(50000);
+    alert("var z is currently not real");
 	  $scope.risk = 0;
 	  if (x < 5){
 		  $scope.risk += 2 * Math.ceil(5 - x);

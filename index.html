@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="SleepScoreApp">
 	<head>
+		<meta charset="UTF-8">
 		<title>Union Pacific Sleep Score App</title>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link href="styles/styles.css" rel="stylesheet" type="text/css">
+		
 	</head>
 	<body>
-	
-	<time-select></time-select>
 		<header>
-			<h1>The NAPP</h1>
 		</header>
 		
 		<p>This is the index page itself.</p>
+		
 		<buttons></buttons>
+		
 		<div ng-view></div>
 		
 		
@@ -21,7 +23,7 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
 	<script src="https://code.angularjs.org/1.2.0-rc.2/angular-route.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
 	<script src="scripts/app.js"></script>
 	<script src="scripts/routeProvider.js"></script>
 	<script src="scripts/directives.js"></script>
@@ -29,6 +31,6 @@
 	<script src="scripts/controllers/AboutController.js"></script>
 	<script src="scripts/controllers/AlarmController.js"></script>
 	<script src="scripts/controllers/CalcController.js"></script>
-	<script src="scripts/controllers/TimeController.js"></script>
+	<script src="scripts/controllers/UserController.js"></script>
 	
 </html>
