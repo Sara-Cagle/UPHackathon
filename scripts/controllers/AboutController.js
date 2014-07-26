@@ -5,4 +5,3 @@ controllers.controller('AboutController', ['$scope', function($scope){
   */
   $scope.message = 'Some words here I hope?????';
 }]);
-

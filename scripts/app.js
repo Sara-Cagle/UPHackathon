@@ -1,8 +1,8 @@
+//Define an angular module for our app
 var app = angular.module('SleepScoreApp', [
-	'ngRoute',
-	'controllers'
+  'ngRoute',
+  'controllers'
 ]);
 
-var controllers = angular.module('SleepScoreApp', []);
 
-
+var controllers = angular.module('controllers', []);
