@@ -12,7 +12,7 @@ controllers.controller('CalcController', ['$scope', function($scope){
   $scope.hour48 = 0; //total sleep in past 48
   $scope.workHours = 0; //your total hours of work
   
-  $scope.hoursInADay = new Array(24); 
+  $scope.hoursInADay = new Array(25);
   
   /**
    * x: hours of sleep in the past 24 hours
