@@ -20,7 +20,11 @@ app.config(['$routeProvider', function($routeProvider) {
 			templateUrl: 'views/calc.html',
 			controller: 'CalcController'
       	}).
+      	when('/user', {
+			templateUrl: 'views/user.html',
+			controller: 'UserController'
+      	}).
       	otherwise({
-			redirectTo: '/about'
+			redirectTo: '/user'
       	});
 }]);

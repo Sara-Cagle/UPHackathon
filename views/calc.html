@@ -1,23 +1,24 @@
-<i>{{message}}</i>
+
+Select your name: 
+<select ng-model="CurrentUser.user">
+    <option ng-repeat="employee in DataFactory" value="{{employee.name}}">{{employee.name}}</option>
+</select>  <br /><br />
 
 
-<br>
-
-
-
-
-
-last 24hrs of sleep: <select ng-model="hour24">
+last 24hrs of sleep: 
+<select ng-model="hour24">
     <option ng-repeat="hour in hoursInADay track by $index" value="{{$index}}">{{$index}}</option>
 </select>  <br />
+<br />
+
 last 48hrs of sleep:<input ng-model="hour48" /><br />
 time at work: <input ng-model="workHours" /><br />
-<input type="button" ng-click="calcRisk()" value="Calculate my fatigue factor" />
 
+<br />
+<input type="button" ng-click="calcRisk()" value="Calculate my fatigue factor" />
+<br /><br />
 <p>This is the fatigue value: {{risk}}</p>
 
 <br /><br />
 
-<div ng-repeat="x in hoursInADay track by index">
-    hey{{$index}}</br />
-</div>
+{{CurrentUser.user}}

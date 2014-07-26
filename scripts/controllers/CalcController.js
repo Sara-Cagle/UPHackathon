@@ -1,4 +1,8 @@
-controllers.controller('CalcController', ['$scope', function($scope){
+controllers.controller('CalcController', ['$scope', 'DataFactory', 'CurrentUser', function($scope, DataFactory, CurrentUser){
+  
+  $scope.DataFactory = DataFactory;
+
+  $scope.CurrentUser = CurrentUser;
   
   /**
    * The content of what goes on the page.
@@ -8,11 +12,21 @@ controllers.controller('CalcController', ['$scope', function($scope){
   //fatigue score
   $scope.risk = null;
   
-  $scope.hour24 = 0; //sleep in just past 24
-  $scope.hour48 = 0; //total sleep in past 48
-  $scope.workHours = 0; //your total hours of work
+  $scope.hour24; //sleep in just past 24
+  $scope.hour48; //total sleep in past 48
+  $scope.workHours; //your total hours of work
   
-  $scope.hoursInADay = new Array(25);
+  $scope.startWork;
+  $scope.endWork;
+  
+  var workHours = $scope.endWork - $scope.startWork;
+  
+  $scope.hoursInADay = new Array(25); //(0 to 24)
+  
+  /* We eventually want to have a way to store the PREVIOUS
+  24 hours of sleep, so rather than ask for the last 48, we ask for current 24
+  and then just add on to the previous 24
+  */
   
   /**
    * x: hours of sleep in the past 24 hours
@@ -22,18 +36,15 @@ controllers.controller('CalcController', ['$scope', function($scope){
   $scope.calcRisk = function(){ 
     var x = parseInt($scope.hour24);
     var y = parseInt($scope.hour48);
-    var z = parseInt($scope.workHours);
+    var z = parseInt(workHours);
 	  $scope.risk = 0;
 	  if (x < 5){
-	    alert("inside the x loop");
 		  $scope.risk += 2 * Math.ceil(5 - x);
 	  }
 	  if (y < 12){
-	    alert("inside the y loop");
 		  $scope.risk += 2 * Math.ceil(12 - y);
 	  }
 	  if (z > y){
-	    alert("inside the z loop");
 	    $scope.risk += (z - y);
 	  }
   };

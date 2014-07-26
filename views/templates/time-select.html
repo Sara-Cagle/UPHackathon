@@ -1,0 +1,9 @@
+Hour you work:
+<select ng-model="startHour">
+    <option ng-repeat="hour in hours12 track by $index" value="{{$index+1}}">{{$index+1}}</option>
+</select>  <br />
+
+Minutes you work:
+<select ng-model="startMin">
+    <option ng-repeat="hour in minutes60 track by $index" value="{{$index}}">{{$index}}</option>
+</select>  <br />
