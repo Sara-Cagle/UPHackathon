@@ -1,0 +1,13 @@
+/*
+ *  File for styles of app
+ */
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+ 
+div,block,h1,h2,h3,h4,h5,p,ul,li,section,textarea { /* perform CSS reset */
+  margin: 0;
+  padding: 0;
+}
