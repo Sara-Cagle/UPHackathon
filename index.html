@@ -4,11 +4,11 @@
 		<meta charset="UTF-8">
   		<meta content="utf-8" http-equiv="encoding">  
 		<title>Union Pacific Sleep Score App</title>
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="styles/bootstrap.min.css">
 		<link href="styles/styles.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="styles/jquery-ui.css">
-		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-		<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+		<script src="scripts/jquery-1.10.2.js"></script>
+		<script src="scripts/jquery-ui.js"></script>
 		<script src="scripts/d3.min.js" charset="utf-8"></script>
 		
 
@@ -46,11 +46,11 @@
     			<div class="accord-page">
     				<ng-include src="'views/calc.html'"></ng-include>
     			</div>
-    			<h3>Alarm&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h3>
+    			<!--h3>Alarm&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h3>
     			<div class="accord-page">
     				<ng-include src="'views/alarm.html'"></ng-include>
-    			</div>
-    			<h3>User&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h3>
+    			</div-->
+    			<h3>Shifts&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h3>
     			<div class="accord-page">
     				<ng-include src="'views/user.html'"></ng-include>
     			</div>
@@ -60,24 +60,22 @@
     			</div>
     			<h3>Log Out&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h3>
     			<div class="accord-page">
-    				<button class="nav-buttons" ng-click="logOut()">Log Out</button>
+    				<button class="nav-buttons" onclick="$('#accordion').accordion({active: false}).click()" ng-click="logOut()">Log Out</button>
     			</div>
 			</div>
 		</div>
 		
 		<div id="blankArea">
-			<img src="images/UPLogo.png" width="100px" height="100px" />
+			<img src="images/UPLogo.png" width="100px" />
 		</div>
 	
 	
 	</body>
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
-	<script src="https://code.angularjs.org/1.2.0-rc.2/angular-route.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular-animate.js"></script>
-	<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
+	<script src="scripts/angular.min.js"></script>
+	<script src="scripts/angular-route.min.js"></script>
+	<script src="scripts/angular-animate.js"></script>
 	<script src="scripts/app.js"></script>
-	<!--script src="scripts/routeProvider.js"></script-->
 	<script src="scripts/directives.js"></script>
 	<script src="scripts/services/factories.js"></script>
 	<script src="scripts/controllers/TotalController.js"></script>

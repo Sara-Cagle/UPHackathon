@@ -1,10 +1,18 @@
 <div ng-controller="AboutController">
 
-    
-<p>Sleeping is really important. Here is a chart:</p><br />
+<div style="text-indent: 30px">
+    <p>This app should be used once daily to maintain an effective schedule and allow for easier analysis of job qualification.</p>
+    <p>The Fatigue Figure calculated in this app helps to determine the ability for the user to work their upcoming shifts. 
+    It is calculated by analyzing your previous 24 and 48 hours of sleep, including naps.</p>
+    <p>If you have been unable to maintain an effective sleep schedule, regardless of the reason, it is unsafe for you to work.
+     If your Fatigue Figure is high, an alert will be sent to your supervisor, requesting a change in your work schedule. If your
+      Fatigue Figure is low, you will be free to continue your work as normal.
+    </p>
+    <p>This chart explains what each Fatigue Figure means in relation to your ability to work.</p><br />
+</div>
 
-<table>
-    <tr>
+<table id="aboutTable">
+    <tr id="about-titles">
         <td>Score </td>
         <td>Risk</td>
         <td>Response/Actions</td></tr>

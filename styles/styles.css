@@ -24,19 +24,23 @@ div,block,h1,h2,h3,h4,h5,p,ul,li,section,textarea { /* perform CSS reset */
  */
 
 #name-select {
-	width: 155px;
+	width: 160px;
 	margin: 5px 0;
 	-moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
+  border: 1px solid gray;
 }
 
 #password-input {
-	line-height: 40%;
+	line-height: 48%;
 	margin: 5px 0;
+	padding: 1px 3px;
 	-moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
+  border: 1px solid gray;
+  outline: none;
 }
 
 .nav-buttons {
@@ -60,9 +64,29 @@ div,block,h1,h2,h3,h4,h5,p,ul,li,section,textarea { /* perform CSS reset */
 	background: #9d9d9d url("images/ui-bg_glass_75_e6e6e6_1x400_pushed.png") 50% 50% repeat-x;
 }
 
+.nav-buttons[disabled] {
+  background: #9d9d9d url("images/ui-bg_glass_75_e6e6e6_1x400.png") 50% 50% repeat-x !important;
+}
+
 /*
  * Inner Pages
  */
+
+ul > li
+{
+    list-style-type: none;
+    color: #00529b;
+}
+
+ul > li > div
+{
+    color: black;
+}
+
+.center-buttons {
+  width: 100%;
+  text-align: center;
+}
 
 #page-title {
 	text-align: center;
@@ -84,17 +108,77 @@ div,block,h1,h2,h3,h4,h5,p,ul,li,section,textarea { /* perform CSS reset */
 	text-align: center;
 }
 
+.data-content {
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+  border: 2px solid #00529b;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.data-title {
+  text-align: left;
+  color: white;
+  height: 20px;
+  width: 100%;
+  padding: 1px 2px;
+  background-color: #00529b;
+
+}
+
+.data-inner-content {
+  width: 100%;
+  padding: .5em .5em;
+}
+
 .btn-primary {
 	width: 33%;
 	
 }
 
 .odd {
-	background-color: blue;
+  list-style-type: none;
+  padding: 3px;
+	width: 240px;
+	height: auto;
+	background-color: rgba(0, 82, 155, .2);
+	-moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
 
 .even {
-	background-color: green;
+  list-style-type: none;
+  padding: 3px;
+	width: 240px;
+	height: auto;
+}
+
+#to-input {
+  margin-left: 1px;
+  position: relative;
+}
+
+#message-input {
+  padding: 5px;
+  display: inline-block;
+}
+
+.email-inputs {
+	margin: 5px 0;
+	padding: 0 3px;
+	-moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  outline: 0;
+}
+
+#left-text {
+  text-align: left;
+  padding-bottom: 3px;
 }
 
 #blankArea{
@@ -104,11 +188,14 @@ div,block,h1,h2,h3,h4,h5,p,ul,li,section,textarea { /* perform CSS reset */
 
 #graph-content {
   text-align: center;
-  margin-left: -15px;
-  background: -webkit-linear-gradient(rgba(176,0,0,.2), yellow, green); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(rgba(176,0,0,.2), yellow, green); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(rgba(176,0,0,.2), yellow, green); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(rgba(176,0,0,.2), yellow, green); /* Standard syntax */
+  overflow: hidden;
+}
+
+#visualisation {
+  background: -webkit-linear-gradient(rgba(176,0,0,.3), rgba(255,255,0,.3), rgba(0,176,0,.3)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgba(176,0,0,.3), rgba(255,255,0,.3), rgba(0,176,0,.3)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgba(176,0,0,.3), rgba(255,255,0,.3), rgba(0,176,0,.3)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgba(176,0,0,.3), rgba(255,255,0,.3), rgba(0,176,0,.3)); /* Standard syntax */
 }
 
 .img{
@@ -117,7 +204,18 @@ div,block,h1,h2,h3,h4,h5,p,ul,li,section,textarea { /* perform CSS reset */
 	
 }
 
+#aboutTable, #aboutTable th, #aboutTable td {
+  text-align: center;
+  padding: 1px;
+  border: 1px solid #00529b;
+  font-size: 95%;
+}
 
+#about-titles {
+  background-color: #00529b;
+  color: white;
+  font-weight: bold;
+}
 
 .axis path, .axis line {
     fill: none;
@@ -160,3 +258,30 @@ div,block,h1,h2,h3,h4,h5,p,ul,li,section,textarea { /* perform CSS reset */
     opacity:1;
     padding:0 10px;
   }
+  
+  
+  
+/*---------------Alarm Clock-----------------------------*/
+
+#jsalarmclock{
+font-family: Tahoma;
+font-weight: bold;
+font-size: 12px;
+}
+
+#jsalarmclock div{
+margin-bottom: 0.8em;
+}
+
+#jsalarmclock div.leftcolumn{
+float: left;
+width: 150px;
+font-size: 13px;
+background-color: lightyellow;
+clear: left;
+}
+
+#jsalarmclock span{
+margin-right: 5px;
+}
+

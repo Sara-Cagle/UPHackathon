@@ -19,6 +19,27 @@ controllers.controller('CalcController', ['$scope', 'DataFactory', 'CurrentUser'
   //adding the prev24 hours with the most recent 24hrs
   var hour48 = CurrentUser.user.last24+$scope.hour24;
   $scope.hoursInADay = new Array(25); //(0 to 24) to select for the last 24hrs
+  
+  $scope.riskLevel = false;
+  $scope.showContact = false;
+  
+  var assessRiskLevel = function(risk){
+    $scope.riskLevel = true;
+    if(risk>=9){
+      $scope.showContact = true;
+      return document.getElementById("riskLevel").innerHTML="A Fatigue Factor of 9 or higher indicates that you are not safe to work your next shift.<br />'Do not engage in any safety critical work and do not recommence until fit for work.'<br /> Please alert your manager in order to have your shift rescheduled for a later time.";
+    }
+    if(risk>=5){
+      $scope.showContact = true;
+      return document.getElementById("riskLevel").innerHTML="A Fatigue Factor of 5 to 8 indicates that you may not be safe to complete your next shift.<br /> 'Report to supervisor and document. Organise supervisory checks. Complete symptom checklist and task re-assignment.' <br /> Please alert your manager in order to have your shift rescheduled for a later time.";
+    }
+    if(risk>=1){
+      $scope.showContact = true;
+      return document.getElementById("riskLevel").innerHTML="A Fatigue Factor of 1 to 4 indicates that you are capable of working, but may not be entirely safe. <br /> 'Report to the supervisor and document. Undertake approved individual control measures. Self-monitor for symptoms, team monitoring by colleagues and task rotation.'<br /> Please alert your manager, and they will best assess if you are capable of completing your next shift.";
+    }
+    return document.getElementById("riskLevel").innerHTML="A Fatigue Factor of 0 is great!<br /> 'Remain with working existing arrangements unless higher level hazards are present.' <br /> You may continue your planned work shift and do not need to alert your supervisor of your status.";
+    
+  };
 
   
   /**
@@ -42,7 +63,10 @@ controllers.controller('CalcController', ['$scope', 'DataFactory', 'CurrentUser'
 	    $scope.risk += (z - y);
 	  }
 	  $scope.showFatigueFactor= true;
+	  assessRiskLevel($scope.risk);
 	  $scope.CurrentUser.user.sleepScores.push({x:CurrentUser.indexCounter, y:$scope.risk});
+	  $scope.InitChart();
+	 // $scope.showGraph = true;
 	  console.log("sleepscores are: "+$scope.CurrentUser.user.sleepScores);
 	  CurrentUser.indexCounter++;
 	  //InitChart();
@@ -118,6 +142,35 @@ controllers.controller('CalcController', ['$scope', 'DataFactory', 'CurrentUser'
     .attr('fill', 'none');
   };
     
-    
+  $scope.notifyManager = function(){
+    $scope.sendMessage('Taylor Isom', 'from me', 'this is encrypted!');
+  }  
+  
+  
+  $scope.sendMessage = function(to, from, msg){
+      //var data = $scope.DataFactory.length;
+      var isValidAddress = false;
+      //console.log("this is data: "+data);
+      for (var userIndex in DataFactory){
+          var user = DataFactory[userIndex];
+          //console.log("is this null: "+user);
+          if (user.name == to){
+              isValidAddress = true;
+              $scope.userToMessage = DataFactory[userIndex];
+          }
+      }
+      //console.log($scope.userToMessage);
+      if (isValidAddress){
+          $scope.messages = $scope.userToMessage.messages;
+          //console.log($scope.messages.length);
+          var newMessage = { 'to' : to,
+                            'from' : from,
+                            'message': msg
+                          
+                      }
+          $scope.messages.push(newMessage);
+          //console.log($scope.messages.length);
+      }
+  };
     
 }]);

@@ -1,54 +1,45 @@
 <div ng-controller="UserController">
-
-<h3>User</h3>
-<div>
- <!--   Select your name: 
+    <!--   Select your name: 
     <select ng-model="CurrentUser.user" ng-options="employee as employee.name for employee in DataFactory">
         <option ng-repeat="employee in DataFactory" value="{{$index}}">{{employee.name}}</option>
     </select-->  
         
-    <br/>
-    To: <input ng-model="to" type="text" name="to" value="" />
-    <br />
-    From: <input ng-model="from" type="text" name="from" value="" />
-    <br />
-    Message: <input ng-model="msg" type="text" name="msg" value="" />
-    <br />
-    <br />
-    <button ng-click="sendMessage()" type="submit">send message</button>
-    <br />
-    {{DataFactory}}
-    <br />
-    <br />
-        <button ng-click="getMessages()" type="submit">get messages</button>
-        <br/>
-        
-        <table>
-            <tr>
-                <td>Destination</td>
-                <td>Sender</td>
-                <td>Message</td>
-            </tr>
-            <tr ng-repeat="message in messages">
-                <td>{{message.to}}</td>
-                <td>{{message.from}}</td>
-                <td>{{message.message}}</td>
-            </tr>
-        </table>
     
+    <br/>
+   <!-- To:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input class="email-inputs" id="to-input" ng-model="to" type="text" name="to" value="" />
+    <br />
+    From: &nbsp&nbsp&nbsp&nbsp&nbsp<input class="email-inputs" ng-model="from" type="text" name="from" value="" />
+    <br />
+    Message: <textarea class="email-inputs" id="message-input" ng-model="msg" type="text" name="msg" value="" style="resize: vertical"></textarea>
+    <br />
+    <br />
+    <button class="nav-buttons" ng-click="sendMessage()" type="submit">Send message</button>
+    <br />
+    <button class="nav-buttons" ng-click="getMessages()" type="submit">Get messages</button>
+    <br/>
+    <table>
+        <tr>
+            <td>Destination</td>
+            <td>Sender</td>
+            <td>Message</td>
+        </tr>
+        <tr ng-repeat="message in messages">
+            <td>{{message.to}}</td>
+            <td>{{message.from}}</td>
+            <td>{{message.message}}</td>
+        </tr>
+    </table>-->
+    <b>Upcoming shifts</b>
     <ul>
         <li ng-repeat="shift in CurrentUser.orderedSchedule = (CurrentUser.schedule | orderBy:Time.getSortingDate:false)">
-            <span ng-class-odd="'odd'" ng-class-even="'even'">
-                <p>Start time: {{Time.makeDate(shift.start)}} 
-                {{Time.makeTime(shift.start)}}</p>
-                <p>end time: {{Time.makeDate(shift.end)}} 
-                {{Time.makeTime(shift.end)}}</p>
-            </span>
+            <div ng-class-odd="'odd'" ng-class-even="'even'">
+                Start time: {{Time.makeDate(shift.start)}} 
+                {{Time.makeTime(shift.start)}}<br />
+                end time: {{Time.makeDate(shift.end)}} 
+                {{Time.makeTime(shift.end)}}
+            </div>
         </li>
     </ul>
     <hr>
-    
-    {{CurrentUser.orderedSchedule}}
-</div>
 
 </div>

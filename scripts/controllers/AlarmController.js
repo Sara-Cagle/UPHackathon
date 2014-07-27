@@ -1,12 +1,38 @@
 controllers.controller('AlarmController', 
 ['$scope', '$interval', function($scope, $interval){
   
-  /**
-   * The content of what goes on the page.
-  */
-  
   
   $scope.format = 'M/d/yy h:mm:ss a';
+  
+  $scope.setAlarm = function(){
+        var now = new Date();
+        $scope.alarms = $scope.CurrentUser.user.alarms;
+        //$scope.alarms.push(now);
+        console.log($scope.CurrentUser.user.messages);//$scope.alarms);
+        
+    };
+    
+    
+  $scope.hoursInADay = new Array(24); //(0 to 23) to select for the last 24hrs
+  $scope.minsInAnHour = new Array(60); //0 to 59
+  
+  $scope.hourTime;
+  $scope.minTime;
+
+
+
+
+/***********************************************
+
+* JavaScript Alarm Clock- by JavaScript Kit (www.javascriptkit.com)
+* This notice must stay intact for usage
+* Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and 100s more
+
+***********************************************/
+
+
+
+
 
 
 }]).directive('myCurrentTime', ['$interval', 'dateFilter',

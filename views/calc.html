@@ -1,35 +1,44 @@
 <div ng-controller="CalcController">
-    <h3>User: {{CurrentUser.user.name}}</h3><br />
+    <h4>User: {{CurrentUser.user.name}}</h4><br />
     Your next shift is:<br />
     
     <!--call some function here, if the dates of shift[0] have alreayd passed,
     remove it from the function and insted call the next one-->
     <ul>
-        <li>Start time: {{Time.makeDate(CurrentUser.user.shifts[0].start)}} {{Time.makeTime(CurrentUser.user.shifts[0].start)}}</li>
-        <li>End time: &nbsp&nbsp{{Time.makeDate(CurrentUser.user.shifts[0].end)}} {{Time.makeTime(CurrentUser.user.shifts[0].end)}}</li>
+        <li class="odd"><div>Start time: {{Time.makeDate(CurrentUser.user.shifts[0].start)}} {{Time.makeTime(CurrentUser.user.shifts[0].start)}}<br />
+        <div>End time: &nbsp&nbsp{{Time.makeDate(CurrentUser.user.shifts[0].end)}} {{Time.makeTime(CurrentUser.user.shifts[0].end)}}</div></li>
     </ul>
     
-        Hours slept in last 24 hours (including naps): 
-        <select ng-model="hour24">
-        <option
-                ng-repeat="x in hoursInADay track by $index"
-                value="{{$index}}">
-          {{$index}}
-        </option>
-        </select>
-         <input class="nav-buttons" type="button" ng-click="calcRisk()" value="Calculate my fatigue factor" />
+    Hours slept in last 24 hours (including naps):
+    <select ng-model="hour24" onclick="$('.fatigue-factor').prop('disabled', false)">
+            <option
+                    ng-repeat="x in hoursInADay track by $index"
+                    value="{{$index}}">
+              {{$index}}
+            </option>
+        </select><br />
         
-        
-        <br />
-        <div ng-show="showFatigueFactor">
-            <p>This is the fatigue value: {{risk}}</p>
-        </div>
-
-    
-    <input class="nav-buttons" type="button" ng-click="InitChart()" value="Generate Fatigue Factor Graph"/>
-    <div id="graph-content" ng-show="showGraph">
-        This is the graph:<br />
-        <svg id="visualisation" width="300px" height="300px"></svg>
+    <div class="center-buttons">
+        <input class="nav-buttons fatigue-factor" type="button" ng-click="calcRisk()" value="Calculate my fatigue factor" onclick="$(this).prop('disabled', true)" disabled/>
     </div>
-    <br />
+    
+
+    <hr>
+    <div class="data-content">
+        <div class="data-title">Data:</div>
+        <div class="data-inner-content">
+            <h4><p ng-show="showFatigueFactor">
+                Fatigue Factor: {{risk}}
+            </p></h4>
+            
+            <p id="riskLevel" ng-show="riskLevel">
+            </p>
+            <input class="nav-buttons" ng-show="showContact" type="button" ng-click="notifyManager()" value="Notify Manager(s)" data-toggle="modal" data-target="myModal"/>
+            <hr>
+            <div id="graph-content" ng-show="showGraph">
+                <h4><p id="left-text">Fatigue Factor Graph:</p></h4>
+                <svg id="visualisation" width="300px" height="300px"></svg>
+            </div>
+        </div>
+    </div>
 </div>

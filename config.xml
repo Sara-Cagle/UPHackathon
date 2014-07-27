@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+	xmlns:gap = "http://phonegap.com/ns/1.0"
+	id        = "com.example.UP.sleepStation"
+	versionCode="1"
+	version   = "1.0">
+
+<name>Sleep Station</name>
+
+<description>
+Sleep Station Safety App
+</description>
+
+<author href="github.com/Sara-Cagle/UPHackathon" 
+email="">
+Apps over Naps (Sara Cagle, Taylor Isom, Matthew Kocmoud)
+</author>

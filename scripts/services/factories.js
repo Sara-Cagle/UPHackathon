@@ -76,7 +76,7 @@ app.factory('CurrentUser', ['DataFactory', function(DataFactory){
     var service = {};
     service.blankUser = {'name': 'Holder Person',
             'password': '000000',
-            'shifts':[ //this might need to be {}
+            'shifts':[ 
                     {'start':new Date(0),
                     'end': new Date(0)
                     }
@@ -90,12 +90,7 @@ app.factory('CurrentUser', ['DataFactory', function(DataFactory){
     service.orderedSchedule = [{'start': new Date(0),
                                 'end': new Date(0)}]; //the schedule after it's been ordered
     
-    
     service.schedule = service.user.shifts;
-    
-    
-    
-    
     
      /**
      * Remove expired dates
@@ -181,6 +176,7 @@ app.factory('DataFactory', function(){
             'last24': 5,
             'sleepScores':[{x:0,y:1},{x:1,y:1},{x:2,y:5},{x:3, y:2},{x:4,y:7},{x:5,y:6},{x:6,y:1},{x:7,y:3}
                 ],
+            'alarms' : ["first alarm", "second alarm", "last alarm"],
             'messages': [
                         {   'to' : 'you',
                             'from' : 'me',
