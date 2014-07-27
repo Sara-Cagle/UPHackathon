@@ -26,9 +26,9 @@
 
 			<div ng-hide="userSelected">
 				<h2>Login</h2><br />
-				Name:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <select id="name-select" ng-model="CurrentUser.user" ng-options="employee as employee.name for employee in DataFactory">
-				    <option selected value="">Name:</option>
+				Name:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <select id="name-select" ng-model="CurrentUser.user" ng-options="employee as employee.name for employee in DataFactory" ng-click="changeUser()">
 				    <option ng-repeat="employee in DataFactory">{{employee.name}}</option>
+				    <option selected disabled value="">Name:</option>
 				</select>  <br />
 				Password: <input id="password-input" type="password" ng-model="password"  value="password"/>
 				<br />

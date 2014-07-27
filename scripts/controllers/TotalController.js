@@ -1,8 +1,12 @@
 controllers.controller('TotalController', ['$scope', 'DataFactory', 'CurrentUser', function($scope, DataFactory, CurrentUser){
    
     $scope.DataFactory = DataFactory;
-    $scope.CurrentUser = CurrentUser;
-    
+    $scope.CurrentUser = CurrentUser[-1];
+    $scope.changeUser = function(){
+        alert("Changed User");
+        $scope.CurrentUser = CurrentUser;
+    }
+   
     //displays buttons if a user has "logged in"
     $scope.userSelected = false;
     
@@ -15,6 +19,8 @@ controllers.controller('TotalController', ['$scope', 'DataFactory', 'CurrentUser
         else{
             document.getElementById("wrongPassword").innerHTML="You have typed the password incorrectly.";
         }
+        
+        $scope.CurrentUser.removeExpiredShifts();
         //implement UP security here
     }
     

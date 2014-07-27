@@ -10,7 +10,7 @@
     <br /><br />
         <button ng-click="getShifts()" type="submit">getShifts</button>
     
-    {{scope.update()}}
+    messages: {{messages}}
     
     <ul>
         <li ng-repeat="shift in CurrentUser.orderedSchedule = (schedule | orderBy:Time.getSortingDate:false)">

@@ -84,6 +84,30 @@ app.factory('CurrentUser', ['DataFactory', function(DataFactory){
     
     service.orderedSchedule = []; //the schedule after it's been ordered
     
+     /**
+     * Remove expired dates
+    */
+    service.removeExpiredShifts = function(){
+        alert("calling remove shifts");
+       // $scope.schedule = $scope.CurrentUser.user.shifts; //array of objects
+        var now = new Date();
+        for (var indexOfShift in service.user.shifts){ //checks each shift
+            var start = service.user.shifts[indexOfShift].start; //date object
+            if(start instanceof Date){
+                if(parseInt(start.getTime())-(1000*60*90)-parseInt(now.getTime())<0){
+                    //futureTime-90minute prep period - current time
+                    service.user.shifts.splice(indexOfShift,1); //removes the shift
+                    //$scope.schedule = $scope.CurrentUser.user.shifts; //updates schedule
+                }
+            }
+            else{
+                alert("start and end werent dates");
+            }
+        }
+    }
+    
+    
+    
     return service;
 }]);
 
@@ -139,9 +163,9 @@ app.factory('DataFactory', function(){
                     }
             ],
             'last24': 5,
-            'messages': 'Hello World!' //[
-                        //{'message': 'hello world'}
-                        //]
+            'messages': [
+                        {'message': 'hello world'}
+                        ]
         },
         { 
             'name': 'Matthew Kocmoud',
