@@ -5,13 +5,45 @@
 	versionCode="1"
 	version   = "1.0">
 
-<name>Sleep Station</name>
+    <name>Sleep Station</name>
+    
+    <description>
+    Sleep Station Safety App
+    </description>
+    
+    <author href="github.com/Sara-Cagle/UPHackathon" 
+    email="">
+    Apps over Naps (Sara Cagle, Taylor Isom, Matthew Kocmoud)
+    </author>
+    
+    <gap:platform name="android" />
+    <preference name="phonegap-version" value="3.3.0" />
+    <preference name="orientation" value="default" />
+    <preference name="fullscreen" value="false" />
+    <!--we might want to set fullscreen to true-->
+    
+    <!--might get rid of these, or change them-->
+    <preference name="webviewbounce" value="false" />
+    <preference name="DisallowOverscroll" value="true"/>
+    <preference name="disallowOverscroll" value="true" />
+    
+    <preference name="exit-on-suspend" value="false" />
 
-<description>
-Sleep Station Safety App
-</description>
+    <!--disables putting a gloss on the icon-->
+    <preference name="prerendered-icon" value="false" />
 
-<author href="github.com/Sara-Cagle/UPHackathon" 
-email="">
-Apps over Naps (Sara Cagle, Taylor Isom, Matthew Kocmoud)
-</author>
+
+    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-installLocation" value="auto" />
+    
+    <preference name="BackgroundColor" value="0xffffffff "/>
+
+
+    <!--icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:density="ldpi" />
+<icon src="res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:density="mdpi" />
+<icon src="res/icon/android/icon-72-hdpi.png" gap:platform="android" gap:density="hdpi" />
+<icon src="res/icon/android/icon-96-xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+<icon src="res/icon/android/icon-144-xxhdpi.png" gap:platform="android" gap:density="xxhdpi" /-->
+
+
+</widget>
