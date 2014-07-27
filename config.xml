@@ -46,7 +46,7 @@
     <icon src="res/icon/Logo.png" gap:platform="android" gap:density="xhdpi" />
     <icon src="res/icon/Logo.png" gap:platform="android" gap:density="xxhdpi" /-->
 
-    <gap:splash src="res/icon/Logo.png" gap:plantform="android" />
+    <gap:splash src="res/screen/Screen.png" gap:plantform="android" />
     <!--gap:splash src="res/screen/Screen.png" gap:platform="android" gap:density="ldpi" />
     <gap:splash src="res/screen/Screen.png" gap:platform="android" gap:density="mdpi" />
     <gap:splash src="res/screen/Screen.png" gap:platform="android" gap:density="hdpi" />
