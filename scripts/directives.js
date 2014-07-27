@@ -16,3 +16,16 @@ the url with "/" prefix is relative to the domain, without the "/" prefix it wil
 relative to the main ("index.html") page or base url (if you use location in the html5 mode)*/
 	};
 });
+
+
+app.directive('graph', function(){ //the 'leftnav' here is the name of the tag we're making <leftnav>
+	return{
+		restrict: 'E', //allows us to make elements (tags)
+		templateUrl: "views/graph.html",
+		scope: true,
+		controller: 'CalcController'
+		};
+});
+
+
+    

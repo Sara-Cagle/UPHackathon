@@ -866,6 +866,11 @@ body .ui-tooltip {
 .ui-accordion-icons {
 	transition: background 0.3s ease-in;
 	color: white;
+	outline: 0;
+}
+
+.ui-state-focus { 
+	outline: none; 
 }
 
 
@@ -873,6 +878,7 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
 	border: 1px solid #004199;
+	outline: 0;
 	background: #00529b url("images/ui-bg_glass_75_e6e6e6_1x400.png") 50% 50% repeat-x;
 	font-weight: normal;
 	color: white;
@@ -908,6 +914,7 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
 	border: 1px solid #aaaaaa;
+	outline: 0;
 	background: #9d9d9d url("images/ui-bg_glass_75_e6e6e6_1x400_pushed.png") 50% 50% repeat-x;
 	font-weight: normal;
 }

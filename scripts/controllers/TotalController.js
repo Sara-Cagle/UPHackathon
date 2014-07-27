@@ -1,9 +1,8 @@
 controllers.controller('TotalController', ['$scope', 'DataFactory', 'CurrentUser', function($scope, DataFactory, CurrentUser){
    
     $scope.DataFactory = DataFactory;
-    $scope.CurrentUser = CurrentUser[-1];
+    $scope.CurrentUser = CurrentUser;
     $scope.changeUser = function(){
-        alert("Changed User");
         $scope.CurrentUser = CurrentUser;
     }
    
@@ -21,6 +20,8 @@ controllers.controller('TotalController', ['$scope', 'DataFactory', 'CurrentUser
         }
         
         $scope.CurrentUser.removeExpiredShifts();
+        $scope.CurrentUser.schedule = $scope.CurrentUser.user.shifts;
+        $scope.CurrentUser.indexCounter = $scope.CurrentUser.user.sleepScores.length;
         //implement UP security here
     }
     
@@ -28,6 +29,9 @@ controllers.controller('TotalController', ['$scope', 'DataFactory', 'CurrentUser
         $scope.CurrentUser.user = CurrentUser.blankUser; //clear the user
         $scope.password = ""; //clear the password
         document.getElementById("wrongPassword").innerHTML=""; //clear errors
+        $scope.CurrentUser.user.sleepScores = [];
+        $scope.CurrentUser.indexCounter = $scope.CurrentUser.user.sleepScores.length;
+        
         $scope.userSelected = false; //close all the buttons
         
     }

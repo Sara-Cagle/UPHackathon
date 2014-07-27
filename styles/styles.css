@@ -5,11 +5,19 @@ html, body {
   width: 100%;
   text-align: center;
 }
+
+@media screen and (max-width: 768px) { 
+	::-webkit-scrollbar { 
+	    display: none; 
+	}
+}
  
 div,block,h1,h2,h3,h4,h5,p,ul,li,section,textarea { /* perform CSS reset */
   margin: 0;
   padding: 0;
 }
+
+
 
 /*
  * Home Page
@@ -17,27 +25,63 @@ div,block,h1,h2,h3,h4,h5,p,ul,li,section,textarea { /* perform CSS reset */
 
 #name-select {
 	width: 155px;
+	margin: 5px 0;
+	-moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
 
 #password-input {
-	line-height: 60%;
+	line-height: 40%;
+	margin: 5px 0;
+	-moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
 
+.nav-buttons {
+	outline: 0;
+	transition: background 0.5s ease;
+	border: 1px solid #004199;
+	margin: 5px 0;
+	background: #00529b url("images/ui-bg_glass_75_e6e6e6_1x400.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: white;
+	-moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
 
-#nav-buttons {
+.nav-buttons:hover {
+	background-color: #458bc9;
+}
+
+.nav-buttons:active, .nav-buttons:focus {
+	background: #9d9d9d url("images/ui-bg_glass_75_e6e6e6_1x400_pushed.png") 50% 50% repeat-x;
+}
+
+/*
+ * Inner Pages
+ */
+
+#page-title {
 	text-align: center;
-	padding: 5px 0;
+	width: 100%;
+	padding: 15px 0;
+}
+
+.accord-page {
+	text-align: left;
+}
+
+.accord-page li {
+  margin-left: 30px;
 }
 
 .group-buttons {
 	width: 98%;
 	margin: 0 1%;
 	text-align: center;
-}
-
-#page-title {
-	text-align: center;
-	width: 100%;
 }
 
 .btn-primary {
@@ -58,8 +102,61 @@ div,block,h1,h2,h3,h4,h5,p,ul,li,section,textarea { /* perform CSS reset */
 	position: relative;
 }
 
+#graph-content {
+  text-align: center;
+  margin-left: -15px;
+  background: -webkit-linear-gradient(rgba(176,0,0,.2), yellow, green); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgba(176,0,0,.2), yellow, green); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgba(176,0,0,.2), yellow, green); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgba(176,0,0,.2), yellow, green); /* Standard syntax */
+}
+
 .img{
 	/*text-align: center;
 	position: relative;*/
 	
 }
+
+
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #777;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: 'Arial';
+    font-size: 13px;
+}
+
+.tick {
+    stroke-dasharray: 1, 2;
+}
+
+.bar {
+    fill: FireBrick;
+}
+        
+/*
+ * Animations
+ */
+
+.animate-hide {
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+    min-height: 200px;
+    max-height: none;
+    opacity:1;
+    padding:10px;
+    display: block;
+    background:white;
+    overflow: hidden;
+  }
+
+  .animate-hide.ng-hide {
+    min-height:0px;
+    max-height:0px;
+    opacity:1;
+    padding:0 10px;
+  }

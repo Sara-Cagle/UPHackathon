@@ -7,21 +7,48 @@
         <option ng-repeat="employee in DataFactory" value="{{$index}}">{{employee.name}}</option>
     </select-->  
         
-    <br /><br />
-        <button ng-click="getShifts()" type="submit">getShifts</button>
-    
-    messages: {{messages}}
+    <br/>
+    To: <input ng-model="to" type="text" name="to" value="" />
+    <br />
+    From: <input ng-model="from" type="text" name="from" value="" />
+    <br />
+    Message: <input ng-model="msg" type="text" name="msg" value="" />
+    <br />
+    <br />
+    <button ng-click="sendMessage()" type="submit">send message</button>
+    <br />
+    {{DataFactory}}
+    <br />
+    <br />
+        <button ng-click="getMessages()" type="submit">get messages</button>
+        <br/>
+        
+        <table>
+            <tr>
+                <td>Destination</td>
+                <td>Sender</td>
+                <td>Message</td>
+            </tr>
+            <tr ng-repeat="message in messages">
+                <td>{{message.to}}</td>
+                <td>{{message.from}}</td>
+                <td>{{message.message}}</td>
+            </tr>
+        </table>
     
     <ul>
-        <li ng-repeat="shift in CurrentUser.orderedSchedule = (schedule | orderBy:Time.getSortingDate:false)">
-            <span ng-class-odd="'odd'" ng-class-even="'even'"><p>Start time: {{Time.makeDate(shift.start)}} 
-            {{Time.makeTime(shift.start)}}</p>
-            <p>end time: {{Time.makeDate(shift.end)}} 
-            {{Time.makeTime(shift.end)}}</p>
+        <li ng-repeat="shift in CurrentUser.orderedSchedule = (CurrentUser.schedule | orderBy:Time.getSortingDate:false)">
+            <span ng-class-odd="'odd'" ng-class-even="'even'">
+                <p>Start time: {{Time.makeDate(shift.start)}} 
+                {{Time.makeTime(shift.start)}}</p>
+                <p>end time: {{Time.makeDate(shift.end)}} 
+                {{Time.makeTime(shift.end)}}</p>
             </span>
         </li>
     </ul>
     <hr>
+    
+    {{CurrentUser.orderedSchedule}}
 </div>
 
 </div>

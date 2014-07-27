@@ -69,6 +69,9 @@ app.factory('Time', function(){
     return service;
 });
 
+
+//----------------------------------------------------
+
 app.factory('CurrentUser', ['DataFactory', function(DataFactory){
     var service = {};
     service.blankUser = {'name': 'Holder Person',
@@ -78,18 +81,26 @@ app.factory('CurrentUser', ['DataFactory', function(DataFactory){
                     'end': new Date(0)
                     }
             ],
-            'last24': 0
+            'last24': 0,
+            'sleepScores':[
+                ]
         };
     service.user = service.blankUser;
     
-    service.orderedSchedule = []; //the schedule after it's been ordered
+    service.orderedSchedule = [{'start': new Date(0),
+                                'end': new Date(0)}]; //the schedule after it's been ordered
+    
+    
+    service.schedule = service.user.shifts;
+    
+    
+    
+    
     
      /**
      * Remove expired dates
     */
     service.removeExpiredShifts = function(){
-        alert("calling remove shifts");
-       // $scope.schedule = $scope.CurrentUser.user.shifts; //array of objects
         var now = new Date();
         for (var indexOfShift in service.user.shifts){ //checks each shift
             var start = service.user.shifts[indexOfShift].start; //date object
@@ -97,7 +108,6 @@ app.factory('CurrentUser', ['DataFactory', function(DataFactory){
                 if(parseInt(start.getTime())-(1000*60*90)-parseInt(now.getTime())<0){
                     //futureTime-90minute prep period - current time
                     service.user.shifts.splice(indexOfShift,1); //removes the shift
-                    //$scope.schedule = $scope.CurrentUser.user.shifts; //updates schedule
                 }
             }
             else{
@@ -106,10 +116,14 @@ app.factory('CurrentUser', ['DataFactory', function(DataFactory){
         }
     }
     
+    service.indexCounter = service.user.sleepScores.length;
     
     
     return service;
 }]);
+
+
+//--------------------------------------------------
 
 
 /**
@@ -137,7 +151,9 @@ app.factory('DataFactory', function(){
                     'end': new Date(2014, 08, 02, 23, 59)
                     }
             ],
-            'last24': 7
+            'last24': 7,
+            'sleepScores':[{x:0,y:1},{x:1,y:0},{x:2,y:5},{x:3, y:2},{x:4,y:2},{x:5,y:0},{x:6,y:1},{x:7,y:3}
+                ]
         },
         { 
             'name': 'Taylor Isom',
@@ -163,8 +179,14 @@ app.factory('DataFactory', function(){
                     }
             ],
             'last24': 5,
+            'sleepScores':[{x:0,y:1},{x:1,y:1},{x:2,y:5},{x:3, y:2},{x:4,y:7},{x:5,y:6},{x:6,y:1},{x:7,y:3}
+                ],
             'messages': [
-                        {'message': 'hello world'}
+                        {   'to' : 'you',
+                            'from' : 'me',
+                            'message': 'hello world'
+                            
+                        }
                         ]
         },
         { 
@@ -187,7 +209,9 @@ app.factory('DataFactory', function(){
                     'end': new Date(2014, 09, 10, 7, 06)
                     }
             ],
-            'last24': 8
+            'last24': 8,
+            'sleepScores':[{x:0,y:2},{x:1,y:1},{x:2,y:5},{x:3, y:0},{x:4,y:0},{x:5,y:6},{x:6,y:1},{x:7,y:0}
+                ]
         },
         { 
             'name': 'Sara Cagle',
@@ -209,7 +233,9 @@ app.factory('DataFactory', function(){
                     'end': new Date(2014, 09, 10, 7, 06)
                     }
             ],
-            'last24': 6
+            'last24': 6,
+            'sleepScores':[{x:0,y:2},{x:1,y:1},{x:2,y:5},{x:3, y:0},{x:4,y:0},{x:5,y:6},{x:6,y:1},{x:7,y:0}
+                ]
         }
         
     ];
