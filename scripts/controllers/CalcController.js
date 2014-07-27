@@ -6,20 +6,22 @@ controllers.controller('CalcController', ['$scope', 'DataFactory', 'CurrentUser'
   
   $scope.Time = Time;
 
-  
+  $scope.toggleCalc = false;
   //fatigue score
   $scope.risk = null;
   
-  $scope.hour24; //sleep in just past 24
-  $scope.workHours; //your total hours of work
+  $scope.hour24;
 
+  $scope.showFatigueFactor = false;
+
+  //subtracting your start time from your end time in hours
+  var workHours = (CurrentUser.user.shifts[0].end.getTime()-CurrentUser.user.shifts[0].start.getTime())/(1000*60*10);
   
-  $scope.hoursInADay = new Array(25); //(0 to 24)
+  //adding the prev24 hours with the most recent 24hrs
+  var hour48 = CurrentUser.user.last24+$scope.hour24;
   
-  /* We eventually want to have a way to store the PREVIOUS
-  24 hours of sleep, so rather than ask for the last 48, we ask for current 24
-  and then just add on to the previous 24
-  */
+  $scope.hoursInADay = new Array(25); //(0 to 24) to select for the last 24hrs
+
   
   /**
    * x: hours of sleep in the past 24 hours
@@ -28,9 +30,8 @@ controllers.controller('CalcController', ['$scope', 'DataFactory', 'CurrentUser'
   */
   $scope.calcRisk = function(){ 
     var x = parseInt($scope.hour24);
-    var y = parseInt($scope.hour48);
-    var z = parseInt(50000);
-    alert("var z is currently not real");
+    var y = parseInt(hour48);
+    var z = parseInt(workHours);
 	  $scope.risk = 0;
 	  if (x < 5){
 		  $scope.risk += 2 * Math.ceil(5 - x);
@@ -41,6 +42,7 @@ controllers.controller('CalcController', ['$scope', 'DataFactory', 'CurrentUser'
 	  if (z > y){
 	    $scope.risk += (z - y);
 	  }
+	  $scope.showFatigueFactor= true;
   };
   
 }]);

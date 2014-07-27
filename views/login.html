@@ -1,0 +1,8 @@
+<div ng-controller="TotalController">
+Select your name: 
+<select ng-model="CurrentUser.user" ng-options="employee as employee.name for employee in DataFactory">
+    <option ng-repeat="employee in DataFactory" value="{{$index}}">{{employee.name}}</option>
+</select>  
+
+<button type="submit" ng-click="userSelected=true">Click</button>
+</div>

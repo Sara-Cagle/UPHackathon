@@ -37,6 +37,21 @@ app.factory('Time', function(){
         }  
         console.log("it wasn't a date");
     };
+    
+    /**
+     *  Gets rid of old shifts 
+     */
+    service.updateShifts = function(employee){
+        var shifts = employee.shifts;
+        var now = new Date();
+        for (var shift in shifts){
+            console.log(now);
+            console.log(shift);
+            
+            
+        }
+    };
+    
     return service;
 });
 
@@ -56,50 +71,89 @@ app.factory('DataFactory', function(){
         { 
             'name': 'John Smith',
             'shifts':[ //this might need to be {}
-                    {'start':new Date(2014, 06, 25, 1, 30),
-                    'end': new Date(2014, 06, 25, 22, 30)
+                    {'start':new Date(2014, 07, 27, 4, 44),
+                    'end': new Date(2014, 07, 27, 12, 21)
                     },
-                    {'start':'/*somedate*/',
-                    'end': '/*someDate*/'
+                    {'start':new Date(2014, 07, 30, 2, 02),
+                    'end': new Date(2014, 07, 30, 9, 09)
+                    },
+                    {'start':new Date(2014, 08, 01, 10, 00),
+                    'end': new Date(2014, 08, 01, 16, 59)
+                    },
+                    {'start':new Date(2014, 08, 02, 16, 01),
+                    'end': new Date(2014, 08, 02, 23, 59)
+                    },
+                    {'start':new Date(2014, 09, 09, 20, 02),
+                    'end': new Date(2014, 09, 10, 7, 06)
                     }
             ],
-            'last24': '/*sleep the prev 24hrs*/' 
+            'last24': 7
         },
         { 
             'name': 'Taylor Isom',
             'shifts':[ //this might need to be {}
-                    {'start':'/*somedate*/',
-                    'end': '/*someDate*/'
+                    {'start':new Date(2012, 07, 11, 3, 26),
+                    'end': new Date(2013, 07, 27, 12, 21)
                     },
-                    {'start':'/*somedate*/',
-                    'end': '/*someDate*/'
+                    {'start':new Date(2014, 07, 27, 4, 44),
+                    'end': new Date(2014, 07, 27, 12, 21)
+                    },
+                    {'start':new Date(2014, 07, 30, 2, 02),
+                    'end': new Date(2014, 07, 30, 9, 09)
+                    },
+                    {'start':new Date(2014, 08, 01, 10, 00),
+                    'end': new Date(2014, 08, 01, 16, 59)
+                    },
+                    {'start':new Date(2014, 08, 02, 16, 01),
+                    'end': new Date(2014, 08, 02, 23, 59)
+                    },
+                    {'start':new Date(2014, 09, 09, 20, 02),
+                    'end': new Date(2014, 09, 10, 7, 06)
                     }
             ],
-            'last24': '/*sleep the prev 24hrs*/' 
+            'last24': 5 
         },
         { 
             'name': 'Matthew Kocmoud',
             'shifts':[ //this might need to be {}
-                    {'start':'/*somedate*/',
-                    'end': '/*someDate*/'
+                    {'start':new Date(2014, 07, 27, 4, 44),
+                    'end': new Date(2014, 07, 27, 12, 21)
                     },
-                    {'start':'/*somedate*/',
-                    'end': '/*someDate*/'
+                    {'start':new Date(2014, 07, 30, 2, 02),
+                    'end': new Date(2014, 07, 30, 9, 09)
+                    },
+                    {'start':new Date(2014, 08, 01, 10, 00),
+                    'end': new Date(2014, 08, 01, 16, 59)
+                    },
+                    {'start':new Date(2014, 08, 02, 16, 01),
+                    'end': new Date(2014, 08, 02, 23, 59)
+                    },
+                    {'start':new Date(2014, 09, 09, 20, 02),
+                    'end': new Date(2014, 09, 10, 7, 06)
                     }
             ],
-            'last24': '/*sleep the prev 24hrs*/' 
+            'last24': 8
         },
         { 
             'name': 'Sara Cagle',
             'shifts':[ //this might need to be {}
-                    {'start':'/*somedate*/',
-                    'end': '/*someDate*/'
+                    {'start':new Date(2014, 07, 27, 4, 44),
+                    'end': new Date(2014, 07, 27, 12, 21)
                     },
-                    {'start':'/*somedate*/',
-                    'end': '/*someDate*/'
+                    {'start':new Date(2014, 07, 30, 2, 02),
+                    'end': new Date(2014, 07, 30, 9, 09)
+                    },
+                    {'start':new Date(2014, 08, 01, 10, 00),
+                    'end': new Date(2014, 08, 01, 16, 59)
+                    },
+                    {'start':new Date(2014, 08, 02, 16, 01),
+                    'end': new Date(2014, 08, 02, 23, 59)
+                    },
+                    {'start':new Date(2014, 09, 09, 20, 02),
+                    'end': new Date(2014, 09, 10, 7, 06)
                     }
             ],
-            'last24': '/*sleep the prev 24hrs*/' 
+            'last24': 6
         }
         
     ];

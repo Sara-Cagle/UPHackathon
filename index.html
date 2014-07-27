@@ -1,23 +1,65 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="SleepScoreApp">
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="utf-8">
 		<title>Union Pacific Sleep Score App</title>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link href="styles/styles.css" rel="stylesheet" type="text/css">
-		
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+		<script>
+		  $(function() {
+		    $( "#accordion" ).accordion({
+		      heightStyle: "content",
+		      collapsible: true
+		    });
+		  });
+		</script>
 	</head>
-	<body>
+	<body ng-controller="TotalController">
 		<header>
+			<h1 id="page-title">The Sleep App</h1>
 		</header>
+
+			<div ng-hide="userSelected">
+				<h2>Login</h2><br />
+				<p>Select your name:</p>
+				<select ng-model="CurrentUser.user" ng-options="employee as employee.name for employee in DataFactory">
+				    <option ng-repeat="employee in DataFactory" value="{{$index}}">{{employee.name}}</option>
+				</select>  
+				
+				<button type="submit" ng-click="userSelected=true">Click</button>
+			</div>
+
+		<div ng-show="userSelected">
+			<!--<buttons></buttons>-->
+			<div id="accordion">
+				<h3>Fatigue Factor</h3>
+    			<div class="accord-page">
+    				<ng-include src="'views/calc.html'"></ng-include>
+    			</div>
+    			<h3>Alarm</h3>
+    			<div class="accord-page">
+    				<ng-include src="'views/alarm.html'"></ng-include>
+    			</div>
+    			<h3>User</h3>
+    			<div class="accord-page">
+    				<ng-include src="'views/user.html'"></ng-include>
+    			</div>
+				<h3>About</h3>
+    			<div>
+    				<ng-include src="'views/about.html'"></ng-include>
+    			</div>
+    			
+			</div>
+			<div ng-view></div>
+		</div>
 		
-		<p>This is the index page itself.</p>
-		
-		<buttons></buttons>
-		
-		<div ng-view></div>
-		
-		
+		<div id="blankArea">
+			<img src="images/UPLogo.png" width="100px" height="100px" />
+		</div>
+	
 	
 	</body>
 	
@@ -25,9 +67,10 @@
 	<script src="https://code.angularjs.org/1.2.0-rc.2/angular-route.min.js"></script>
 	<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
 	<script src="scripts/app.js"></script>
-	<script src="scripts/routeProvider.js"></script>
+	<!--script src="scripts/routeProvider.js"></script-->
 	<script src="scripts/directives.js"></script>
 	<script src="scripts/services/factories.js"></script>
+	<script src="scripts/controllers/TotalController.js"></script>
 	<script src="scripts/controllers/AboutController.js"></script>
 	<script src="scripts/controllers/AlarmController.js"></script>
 	<script src="scripts/controllers/CalcController.js"></script>

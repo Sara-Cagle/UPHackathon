@@ -1,19 +1,27 @@
-Select your name: 
-<select ng-model="CurrentUser.user" ng-options="employee as employee.name for employee in DataFactory">
-    <option ng-repeat="employee in DataFactory" value="{{$index}}">{{employee.name}}</option>
-</select>  <br /><br />
-    <button ng-click="getShifts()" type="submit">getShifts</button>
+<div ng-controller="UserController">
 
-<ul>
-    <li ng-repeat="shift in schedule">
-        <ul>
-            <li>
-                <p>Start time: {{shift.start}}</p>
-            </li>
-            <li>
-                <p>end time: {{shift.end}}</p>
-            </li>
-        </ul>
-    </li>
-</ul>
-<hr>
+<h3>User</h3>
+<div>
+    Select your name: 
+    <select ng-model="CurrentUser.user" ng-options="employee as employee.name for employee in DataFactory">
+        <option ng-repeat="employee in DataFactory" value="{{$index}}">{{employee.name}}</option>
+    </select>  
+        
+    <br /><br />
+        <button ng-click="getShifts()" type="submit">getShifts</button>
+    
+    {{Time.updateShifts(CurrentUser.user)}} 
+    
+    <ul>
+        <li ng-repeat="shift in schedule">
+            <span ng-class-odd="'odd'" ng-class-even="'even'"><p>Start time: {{Time.makeDate(shift.start)}} 
+            {{Time.makeTime(shift.start)}}</p>
+            <p>end time: {{Time.makeDate(shift.end)}} 
+            {{Time.makeTime(shift.end)}}</p>
+            </span>
+        </li>
+    </ul>
+    <hr>
+</div>
+
+</div>

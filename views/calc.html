@@ -1,16 +1,43 @@
-<h2>Current User: {{CurrentUser.user.name}}</h2><br />
-<br />
-Your next shift is:<br />
+<div ng-controller="CalcController">
 
-<!--call some function here, if the dates of shift[0] have alreayd passed,
-remove it from the function and insted call the next one-->
-<ul>
-    <li>Start time: {{Time.makeDate(CurrentUser.user.shifts[0].start)}} {{Time.makeTime(CurrentUser.user.shifts[0].start)}}</li>
-    <li>End time: {{Time.makeDate(CurrentUser.user.shifts[0].end)}} {{Time.makeTime(CurrentUser.user.shifts[0].end)}}</li>
-</ul>
+<h3>Fatigue Factor</h3>
+<div>
+    <h2>Current User: {{CurrentUser.user.name}}</h2><br />
+    <br />
+    Your next shift is:<br />
+    
+    <!--call some function here, if the dates of shift[0] have alreayd passed,
+    remove it from the function and insted call the next one-->
+    <ul>
+        <li>Start time: {{Time.makeDate(CurrentUser.user.shifts[0].start)}} {{Time.makeTime(CurrentUser.user.shifts[0].start)}}</li>
+        <li>End time: {{Time.makeDate(CurrentUser.user.shifts[0].end)}} {{Time.makeTime(CurrentUser.user.shifts[0].end)}}</li>
+    </ul>
+    
+    <input type="button" ng-click="toggleCalc=!toggleCalc" value="Toggle calculator">
+    
+    <div ng-show="toggleCalc">
+    
+    
+       
+        Hours slept in last 24 hours (including naps): 
+        <select ng-model="hour24">
+        <option
+                ng-repeat="x in hoursInADay track by $index"
+                value="{{$index}}">
+          {{$index}}
+        </option>
+    </select>
+         <input type="button" ng-click="calcRisk()" value="Calculate my fatigue factor" />
+        <br />
+        
+        
+        <br />
+        <div ng-show="showFatigueFactor">
+            <p>This is the fatigue value: {{risk}}</p>
+        </div>
+    </div>
+    
+    <br /><br />
+</div>
 
-<input type="button" ng-click="calcRisk()" value="Calculate my fatigue factor" />
-<br /><br />
-<p>This is the fatigue value: {{risk}}</p>
-
-<br /><br />
+</div>
