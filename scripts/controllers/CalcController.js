@@ -1,4 +1,4 @@
-controllers.controller('CalcController', ['$scope', 'DataFactory', 'CurrentUser', 'Time',function($scope, DataFactory, CurrentUser, Time){
+controllers.controller('CalcController', ['$scope', 'DataFactory', 'CurrentUser', 'Time', function($scope, DataFactory, CurrentUser, Time){
   
   $scope.DataFactory = DataFactory;
 
@@ -15,7 +15,7 @@ controllers.controller('CalcController', ['$scope', 'DataFactory', 'CurrentUser'
   $scope.showFatigueFactor = false;
 
   //subtracting your start time from your end time in hours
-  var workHours = (CurrentUser.user.shifts[0].end.getTime()-CurrentUser.user.shifts[0].start.getTime())/(1000*60*10);
+  var workHours = (CurrentUser.orderedSchedule[0].end.getTime()-CurrentUser.orderedSchedule[0].start.getTime())/(1000*60*10);
   
   //adding the prev24 hours with the most recent 24hrs
   var hour48 = CurrentUser.user.last24+$scope.hour24;

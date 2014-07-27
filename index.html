@@ -5,31 +5,37 @@
 		<title>Union Pacific Sleep Score App</title>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link href="styles/styles.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" href="styles/jquery-ui.css">
 		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
 		<script>
 		  $(function() {
 		    $( "#accordion" ).accordion({
 		      heightStyle: "content",
-		      collapsible: true
+		      collapsible: true,
+		      active: false
 		    });
 		  });
 		</script>
 	</head>
 	<body ng-controller="TotalController">
 		<header>
-			<h1 id="page-title">The Sleep App</h1>
+			<h2 id="page-title">The Sleep Station</h2>
 		</header>
 
 			<div ng-hide="userSelected">
 				<h2>Login</h2><br />
-				<p>Select your name:</p>
-				<select ng-model="CurrentUser.user" ng-options="employee as employee.name for employee in DataFactory">
-				    <option ng-repeat="employee in DataFactory" value="{{$index}}">{{employee.name}}</option>
-				</select>  
+				Name:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <select id="name-select" ng-model="CurrentUser.user" ng-options="employee as employee.name for employee in DataFactory">
+				    <option selected value="">Name:</option>
+				    <option ng-repeat="employee in DataFactory">{{employee.name}}</option>
+				</select>  <br />
+				Password: <input id="password-input" type="password" ng-model="password"  value="password"/>
+				<br />
+				<button type="submit" ng-click="checkPassword()">Login</button><br />
 				
-				<button type="submit" ng-click="userSelected=true">Click</button>
+				<div id="wrongPassword">
+				</div>
 			</div>
 
 		<div ng-show="userSelected">
@@ -48,12 +54,14 @@
     				<ng-include src="'views/user.html'"></ng-include>
     			</div>
 				<h3>About</h3>
-    			<div>
+    			<div class="accord-page">
     				<ng-include src="'views/about.html'"></ng-include>
     			</div>
-    			
+    			<h3>Log Out</h3>
+    			<div class="accord-page">
+    				<button ng-click="logOut()">Log Out</button>
+    			</div>
 			</div>
-			<div ng-view></div>
 		</div>
 		
 		<div id="blankArea">
@@ -73,7 +81,6 @@
 	<script src="scripts/controllers/TotalController.js"></script>
 	<script src="scripts/controllers/AboutController.js"></script>
 	<script src="scripts/controllers/AlarmController.js"></script>
-	<script src="scripts/controllers/CalcController.js"></script>
 	<script src="scripts/controllers/UserController.js"></script>
-	
+	<script src="scripts/controllers/CalcController.js"></script>
 </html>

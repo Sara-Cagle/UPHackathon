@@ -3,12 +3,26 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
+  text-align: center;
 }
  
 div,block,h1,h2,h3,h4,h5,p,ul,li,section,textarea { /* perform CSS reset */
   margin: 0;
   padding: 0;
 }
+
+/*
+ * Home Page
+ */
+
+#name-select {
+	width: 155px;
+}
+
+#password-input {
+	line-height: 60%;
+}
+
 
 #nav-buttons {
 	text-align: center;
@@ -45,7 +59,7 @@ div,block,h1,h2,h3,h4,h5,p,ul,li,section,textarea { /* perform CSS reset */
 }
 
 .img{
-	text-align: center;
-	position: relative;
+	/*text-align: center;
+	position: relative;*/
 	
 }

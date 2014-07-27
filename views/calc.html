@@ -16,9 +16,6 @@
     <input type="button" ng-click="toggleCalc=!toggleCalc" value="Toggle calculator">
     
     <div ng-show="toggleCalc">
-    
-    
-       
         Hours slept in last 24 hours (including naps): 
         <select ng-model="hour24">
         <option
@@ -26,7 +23,7 @@
                 value="{{$index}}">
           {{$index}}
         </option>
-    </select>
+        </select>
          <input type="button" ng-click="calcRisk()" value="Calculate my fatigue factor" />
         <br />
         
