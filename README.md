@@ -3,7 +3,7 @@ UPHackathon
 
 2014 Union Pacific hackathon code
 
-Sleep Station App
+**Sleep Station App**
 
 Implented in AngularJS, Javascript, and Jquery, this app was wrapped in Phonegap and exported for
 Android devices. The download is found here: https://build.phonegap.com/apps/1024154/share
